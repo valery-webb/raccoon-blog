@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JS-UI-ANGULAR</title>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html">
+        <meta http-equiv="X-UA-Comparible" content="IE=edge">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/bootstrap.css" rel="stylesheet">
+        <link href="../../build/css/main.css" rel="stylesheet">
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.js"></script>
+        <![endif]-->
+    </head>
+    <body ng-app="app">
+    <div class="container" style="background: pink;">#header</div>
+    <div style="background: blue">
+        <div class="container" style="background: gray;">#menu</div>
+    </div>
+    <div class="container" style="">
+        <div class="row">
+            <div class="col-md-8 col-sm-8 col-xs-12 content-area" style="">#content area</div>
+            <div class="col-md-4 col-sm-4 col-xs-12  aside-area" style="background:yellow">#aside area</div>
+        </div>
+    </div>
+
+<div class="test3">test3</div>
+
+    <br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <div class="col-md-5" ng-controller="cmCtrl">{{check}}</div>
+        <div class="row-wrapper">
+            <header class="clmn-12 logo-holder">
+                <!--<a class="logo" href="index.html" title=""></a>-->
+            </header>
+        </div>
+        <div class="offset-wrapper">
+            <div class="row-wrapper">
+                <ul id="services-menu" class="services-toolbar">
+                    <li><a href="" class="help" data-content="help">?</a></li>
+                    <li><a href="" class="info" data-content="info">i</a></li>
+                    <li><a href="" class="edit" data-content="edit">e</a></li>
+                </ul>
+                <nav>
+                    <ul id="top-menu" class="nav-list">
+                        <li><a ui-sref="blogers.list" href="#/blogers" title="">Blogers</a></li>
+                        <li><a ui-sref="articles" ui-sref-active="active" href="#/articles" title="">articles</a></li>
+                        <li><a href="#/contacts" title="">contacts</a></li>
+                        <li><a href="#/events" title="">events</a></li>
+                        <li><a href="#/videos" title="">videos</a></li>
+                    </ul>
+                    <a href="" id="toggle-mobile-menu" type="button" rel="menu-toggler" class="menu-toggle">m</a>
+                </nav>
+            </div>
+        </div>
+    <hr />
+    <div ui-view></div>
+    <script type="text/javascript" src="../../ui/src/js/3p/angular.js"></script>
+    <script type="text/javascript" src="../../ui/src/js/3p/angular-resource.js"></script>
+    <script type="text/javascript" src="../../ui/src/js/3p/angular-ui-router.js"></script>
+    <script type="text/javascript" src="../../ui/src/js/3p/ui-bootstrap-tpls-0.12.0.js"></script>
+    <script type="text/javascript" src="../../build/js/main.js"></script>
+    </body>
+</html>

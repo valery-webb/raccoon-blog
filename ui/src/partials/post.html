@@ -1,0 +1,33 @@
+<article id="{{post._id}}" class="post-article">
+<header style="height:auto;cursor:pointer;">
+        <a data-id="{{post._id}}" ng-click='toggleUpdateModal($event);'>update</a>
+        <span>|</span>
+        <a data-id="{{post._id}}" ng-click="toggleRemoveModal($event)">delete</a>
+    </header>
+
+
+    <figure>
+        <img ng-src="images/content/blog_img_001.jpg" />
+        <figcaption><h3>{{post.title}}</h3></figcaption>
+    </figure>
+    <div class="meta-box h-row">
+        <div class="clmn-3 date">{{post.date.substring(0, 10)}} &nbsp;</div>
+        <div class="clmn-3 author">{{post.author}}</div>
+        <div class="clmn-6 social-wrapper">
+            <ul class="social-toolbar">
+                <li><a href="#" title="">f 1</a></li>
+                <li><a href="#" title="">g 17</a></li>
+                <li><a href="#" title="">tw 5</a></li>
+                <li><a href="#" title="">в 47</a></li>
+                <li><a href="#" title="">я 3</a></li>
+                <li class="stretch"></li>
+            </ul>
+        </div>
+    </div>
+    <div class="h-row">
+        <p class="article-text">{{post.body}}</p>
+    </div>
+    <footer>
+        <a href="#latest/{{post._id}}" class="navigation-link">Read more...</a>
+    </footer>
+</article>

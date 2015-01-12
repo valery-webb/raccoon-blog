@@ -1,0 +1,82 @@
+/* base-layout.less
+------------------------*/
+.test3{
+  color:yellow;
+}
+
+header.logo-holder {
+  line-height: 85px;
+  text-align: center;
+
+  .logo {
+    display: inline-block;
+    vertical-align: middle;
+    width: 373px;
+    height: 65px;
+    background: url(../js-ui-blog/images/logo_960.png) top left no-repeat;
+  }
+}
+
+.offset-wrapper {
+  min-width: 320px;
+  background: @color-blue-dark;
+  border-bottom: @color-light-border 2px solid;
+}
+
+.content {
+
+  section {
+    padding: 40px 15px 15px 15px;
+  }
+
+  article {
+    position: relative;
+    padding-bottom: 50px;
+    //border: red 1px solid;
+
+    figure {
+      min-height: 180px;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+
+    .meta-box {
+      border-top: @color-gray-light 1px solid;
+      border-bottom: @color-gray-light 1px solid;
+
+      .date, .author {
+        line-height:38px;
+      }
+    }
+
+    .article-text {
+      padding:15px 0 0 0;
+    }
+  }
+}
+
+.post-box {
+  padding-bottom: 5px;
+
+  header {
+    text-align: right;
+    padding-bottom: 5px;
+
+    a:hover {
+      color: #6d9ad0;
+    }
+  }
+}
+
+#services-content {
+  & > div {
+    display: none;
+  }
+
+  & > div.active {
+    display: block;
+  }
+}

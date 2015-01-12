@@ -1,0 +1,51 @@
+/* tags.less
+----------------------*/
+.tag {
+  margin: 0 10px 5px 0;
+  padding: 0 15px;
+  position: relative;
+  background: @color-blue-dark;
+  line-height: 20px;
+  display: inline-block;
+  text-decoration: none;
+  text-transform: capitalize;
+  color: #fff;
+
+
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    .cicle(7px);
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto 0;
+    background: @color-white;
+    z-index: 2;
+  }
+
+  &:after {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    .arrow-right(10px, @color-blue-dark);
+    z-index: 1;
+  }
+
+  &:hover{
+    background: @color-blue-light;
+  }
+
+  &:hover::after{
+    border-color: transparent transparent transparent @color-blue-light;
+  }
+}
+
+
+
+

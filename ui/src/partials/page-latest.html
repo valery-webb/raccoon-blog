@@ -1,0 +1,11 @@
+<button ng-click='toggleAddModal()'>Add Post</button>
+
+<div class="post-box" ng-repeat="post in posts">
+    <post></post>
+</div>
+
+<add-post-directive show='modalAddShown'></add-post-directive>
+<update-post-directive show='modalUpdateShown'></update-post-directive>
+<remove-post-directive show='modalRemoveShown'></remove-post-directive>
+
+
