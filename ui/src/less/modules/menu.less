@@ -14,12 +14,8 @@
     width: 32px;
     top:2px;
     right: 0;
-    /* move to the mixin */
-    background: @color-blue-origin;
-    color: @color-white;
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none;
+
+    .menu-quadro-elems;
 
     &:hover,
     &:visited,
@@ -58,8 +54,6 @@ ul.nav-list {
     }
 }
 
-
-
 /* Small screens menu opened styles
 -------------------------------------*/
 ul.nav-list.mobile-opened {
@@ -83,17 +77,14 @@ ul.nav-list.mobile-opened {
     }
 }
 
-
+/* Services toolbar base styles
+---------------------------------*/
 ul.services-toolbar {
     position: relative;
 
     li > a {
         display: none;
-        background: @color-blue-origin;
-        color: @color-white;
-        cursor: pointer;
-        text-align: center;
-        text-decoration: none;
+        .menu-quadro-elems;
     }
 
     &:hover {

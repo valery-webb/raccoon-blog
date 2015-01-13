@@ -1,17 +1,20 @@
 /* media-queries.less
 ----------------------------------*/
 
-/* Custom points
--------------------------------------------------*/
-@media screen and (min-width: 768px) and (max-width: 990px) {
+/* Custom point: #1
+-------------------------------------------------------------*/
+@media screen and (min-width: 769px) and (max-width: 990px) {
+
     ul.nav-list{
-      li {
-        font-size: 80%;
-      }
+        li {
+            font-size: 80%;
+        }
     }
 }
 
-@media screen and (min-width: 530px) and (max-width: 767px) {
+/* Custom point: #2
+-------------------------------------------------------------*/
+@media screen and (min-width: 530px) and (max-width: 768px) {
 
     ul.nav-list {
         li {
@@ -24,6 +27,7 @@
     }
 
     ul.services-toolbar {
+
         li:nth-child(1) > a,
         li:nth-child(2) > a {
             display: block;
@@ -47,6 +51,8 @@
     }
 }
 
+/* Custom point: #3
+---------------------------------------*/
 @media screen and (max-width: 529px) {
 
     .menu-toggle-button {

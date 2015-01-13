@@ -136,6 +136,13 @@ table {
   overflow: hidden;
   zoom: 1;
 }
+.menu-quadro-elems {
+  background: #7ca7d9;
+  color: #ffffff;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+}
 /* utils.less
 --------------------*/
 * {
@@ -320,7 +327,6 @@ figcaption {
   width: 32px;
   top: 2px;
   right: 0;
-  /* move to the mixin */
   background: #7ca7d9;
   color: #ffffff;
   cursor: pointer;
@@ -377,6 +383,8 @@ ul.nav-list.mobile-opened li > a {
 ul.nav-list.mobile-opened li > a:hover {
   background: #b4d9fc;
 }
+/* Services toolbar base styles
+---------------------------------*/
 ul.services-toolbar {
   position: relative;
 }
@@ -541,7 +549,7 @@ header.logo-holder .logo {
   vertical-align: middle;
   width: 373px;
   height: 65px;
-  background: url(../js-ui-blog/images/logo_960.png) top left no-repeat;
+  background: url(../../ui/src/images/logo_960.png) top left no-repeat;
 }
 .offset-wrapper {
   min-width: 320px;
@@ -591,14 +599,16 @@ header.logo-holder .logo {
 }
 /* media-queries.less
 ----------------------------------*/
-/* Custom points
--------------------------------------------------*/
-@media screen and (min-width: 768px) and (max-width: 990px) {
+/* Custom point: #1
+-------------------------------------------------------------*/
+@media screen and (min-width: 769px) and (max-width: 990px) {
   ul.nav-list li {
     font-size: 80%;
   }
 }
-@media screen and (min-width: 530px) and (max-width: 767px) {
+/* Custom point: #2
+-------------------------------------------------------------*/
+@media screen and (min-width: 530px) and (max-width: 768px) {
   ul.nav-list li {
     font-size: 80%;
   }
@@ -623,6 +633,8 @@ header.logo-holder .logo {
     top: 2px;
   }
 }
+/* Custom point: #3
+---------------------------------------*/
 @media screen and (max-width: 529px) {
   .menu-toggle-button {
     display: block;
