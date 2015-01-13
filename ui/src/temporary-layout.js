@@ -6,6 +6,7 @@ window.onload = function () {
         servicesMenu = document.getElementById('services-menu').getElementsByTagName('li'),
         servicesContent = document.getElementById('services-content').getElementsByTagName('div');
 
+
     // setup listeners
     mBtn.addEventListener('click', toggleMenu, false);
     window.addEventListener('resize', onResizeApp, false);
@@ -24,14 +25,15 @@ window.onload = function () {
     }
 
     function toggleMenu (e) {
+        e.preventDefault();
         var el = e.target,
-            isMobile = document.body.clientWidth <= 320 ? true : false,
-            navList = el.rel === 'menu-toggler' ? el.previousElementSibling : el.parentNode.parentNode;
+            isMobile = document.body.clientWidth <= 529 ? true : false,
+            navList = document.getElementById('top-menu');
 
         if (isMobile) {
             navList.className === 'nav-list mobile-opened'
                 ? navList.className = 'nav-list'
-                : navList.className = 'nav-list mobile-opened';
+                : navList.className = 'nav-list mobile-opened'
         }
     }
 
