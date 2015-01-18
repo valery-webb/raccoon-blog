@@ -26,8 +26,40 @@ angular.module('app',[
     'app.admin',
     'app.blog'
     ]);
-angular.module('app.admin').value('a', 123);
+angular.module('app.admin').config(function ($stateProvider, $urlRouterProvider) {
 
+    $stateProvider
+        .state('admin', {
+            abstract: true,
+            url: '/admin',
+            templateUrl: 'js/app/admin/adminDirective.html'
+            //controller: 'contentManagerCtrl'
+        })
+        .state('admin.contentManager', {
+            url: '/content-manager',
+            templateUrl: 'js/app/admin/content-manager/contentManagerDirective.html',
+            //parent: 'admin',
+            resolve: {
+                isLoaded: function () {
+                    console.log('hey')
+                    return false;
+                }
+            },
+            controller: 'ContentManagerCtrl',
+            onEnter: function(){
+                console.log(arguments,'onEnter fired')
+            },
+            onExit: function(){
+                console.log('onExit fired')
+            }
+        })
+        .state('admin.userInfo', {
+            url: '/user-info',
+            templateUrl: 'js/app/admin/user-info/userInfoDirective.html',
+            //parent: 'admin',
+            controller: 'UserInfoCtrl'
+    })
+});
 angular.module('app.blog');
 angular.module('app.admin.contentManager').value('a', 111);
 angular.module('app.admin.userInfo');
@@ -69,14 +101,26 @@ angular.module('app.blog.blogers').config(function ($stateProvider, $urlRouterPr
     })
 });
 angular.module('app.blog.contacts')
-angular.module('app.admin.contentManager').controller('cmCtrl', ['$scope', function ($scope) {
-    $scope.check = 'check value from contentManagerCtrl modified 8'; 
-    console.log('content manager ready...')
+angular.module('app.admin.contentManager').controller('ContentManagerCtrl', [
+    '$scope', '$http', 'isLoaded', function ($scope, $http, isLoaded) {
+
+    $scope.isLoaded = isLoaded;
+
+    $http({method: 'GET', url: '../../mocks/list-of-items.json'}).
+        success(function (data, status, headers, config) {
+        console.log(data.length, 'success calling')
+        $scope.items = data;
+        $scope.isLoaded = true;
+    }).
+    error(function (data, status, headers, config) {
+
+    });
+
 }]);
 
 
-angular.module('app.admin.userInfo').controller('userInfoCtrl', ['$scope', function ($scope) {
-    $scope.check = 'check value from userInfo controller'; 
+angular.module('app.admin.userInfo').controller('UserInfoCtrl', ['$scope', function ($scope) {
+    $scope.check = 'check value from UserInfo controller'; 
     console.log('user info ready...')
 }]);
 

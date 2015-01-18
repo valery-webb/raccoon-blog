@@ -520,6 +520,21 @@ aside.additional .aside-text {
   padding: 10px 0;
   text-align: right;
 }
+.header-menu-holder {
+  position: absolute;
+  padding-top: 10px;
+  height: 85px;
+  top: 0;
+  right: 0;
+}
+.header-menu-holder ul {
+  height: 60px;
+}
+.header-menu-holder ul > li a {
+  display: block;
+  line-height: 30px;
+  padding: 0 20px;
+}
 /* navigation-link.less
 ----------------------- */
 .navigation-link {
@@ -540,11 +555,14 @@ aside.additional .aside-text {
 body {
   min-width: 320px;
 }
-header.logo-holder {
+header {
+  position: relative;
+}
+.logo-holder {
   line-height: 85px;
   text-align: center;
 }
-header.logo-holder .logo {
+.logo-holder .logo {
   display: inline-block;
   vertical-align: middle;
   width: 373px;
@@ -597,6 +615,11 @@ header.logo-holder .logo {
 #services-content > div.active {
   display: block;
 }
+.loader {
+  width: 200px;
+  height: 200px;
+  background: url(../../ui/src/images/spinner.gif) top left no-repeat;
+}
 /* media-queries.less
 ----------------------------------*/
 /* Custom point: #1
@@ -609,6 +632,9 @@ header.logo-holder .logo {
 /* Custom point: #2
 -------------------------------------------------------------*/
 @media screen and (min-width: 530px) and (max-width: 768px) {
+  .header-menu-holder ul > li a {
+    padding-left: 0;
+  }
   ul.nav-list li {
     font-size: 80%;
   }
@@ -636,6 +662,32 @@ header.logo-holder .logo {
 /* Custom point: #3
 ---------------------------------------*/
 @media screen and (max-width: 529px) {
+  .logo-holder {
+    line-height: 50px;
+    text-align: center;
+  }
+  .logo-holder .logo {
+    display: inline-block;
+    vertical-align: middle;
+    width: 233px;
+    height: 37px;
+    background: url(../../ui/src/images/logo_320.png) top left no-repeat;
+  }
+  .header-menu-holder {
+    position: relative;
+    height: auto;
+    padding: 0;
+  }
+  .header-menu-holder .header-menu {
+    height: auto;
+    overflow: hidden;
+  }
+  .header-menu-holder .header-menu > li {
+    float: left;
+    width: 50%;
+    text-align: center;
+    background: pink;
+  }
   .menu-toggle-button {
     display: block;
   }

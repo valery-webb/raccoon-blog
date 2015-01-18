@@ -1,0 +1,85 @@
+////MODULES
+
+1. Объвление модулей
+
+// admin modules
+angular.module('app.admin.contentManager',[]);
+angular.module('app.admin.userInfo',[]);
+
+// blog modules
+angular.module('app.blog.articles',[]);
+angular.module('app.blog.blogers',[]);
+angular.module('app.blog.contacts',[]);
+
+
+// main app modules
+angular.module('app.admin',[
+    'app.admin.contentManager',
+    'app.admin.userInfo'
+]);
+
+angular.module('app.blog',[
+    'app.blog.articles',
+    'app.blog.blogers',
+    'app.blog.contacts'
+]);
+
+// main app module
+angular.module('app',[
+    'ui.router',
+    'app.admin',
+    'app.blog'
+]);
+
+--------------------------------------------------------------------------------------
+
+2. Настройки отдельных модулей в конфиге:
+
+angular.module('app.admin').config(function ($stateProvider, $urlRouterProvider) {
+
+    $stateProvider
+        .state('admin', {
+            //abstract: true,
+            url: '/admin',
+            templateUrl: 'js/app/admin/adminDirective.html'
+            //controller: 'blogersCtrl'
+        })
+        .state('admin.contentManager', {
+            url: '/content-manager',
+            templateUrl: 'js/app/admin/content-manager/contentManagerDirective.html',
+            //parent: 'admin',
+            controller: 'contentManagerCtrl'
+        })
+        .state('admin.userInfo', {
+            url: '/user-info',
+            templateUrl: 'js/app/admin/user-info/userInfoDirective.html',
+            //parent: 'admin',
+            controller: 'userInfoCtrl'
+    })
+});
+
+--------------------------------------------------------------------------------------
+
+3. Добавление в модуль компонентов:
+
+angular.module('app.admin.contentManager').controller('cmCtrl', ['$scope', function ($scope) {
+    $scope.check = 'check value from contentManagerCtrl modified 8'; 
+    console.log('content manager ready...')
+}]);
+
+angular.module('app.admin.contentManager').directive(); etc.
+}]);
+
+
+////ROUTES
+
+1. Навигация с вложенными стейтами:
+
+<li><a ui-sref="admin.contentManager">Admin</a></li>
+
+эта ссылка загрузит содержимое стейта admin (он содержит свой <ui-view>) в гавный <ui-view>
+стейт admin как абстракт, будет инициализирован неявно, так как ссылка ведет на его чайлд "contentManager"
+и по дефолту будет загружен contentManager
+
+2. Если в конфине для стейта указан контроллер, то его не нужно
+подключать через ng-controller в html, так как он вызовется дважды

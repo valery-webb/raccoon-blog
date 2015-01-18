@@ -15,13 +15,23 @@
         <![endif]-->
     </head>
     <body ng-app="app">
-    <div class="container" style="background: pink;">
-        <header class="clmn-12 logo-holder">
-            <a class="logo" href="index.html" title=""></a>
+    <div class="container">
+    <!--<div class="loader" style="display: none;"></div>-->
+        <header>
+            <div class="row">
+                <div class="col-md-12 logo-holder">
+                    <a class="logo" href="index.html" title=""></a>
+                </div>
+            </div>
+            <div class="row header-menu-holder">
+                <ul class="col-md-12 header-menu" style="padding: 0;">
+                    <li><a ui-sref="admin.contentManager">Admin</a></li>
+                    <li><a ui-sref="basket">Basket</a></li>
+                </ul>
+            </div>
         </header>
     </div>
-    <div style="background: blue">
-
+    <div class="container-fluid" style="background: blue;padding:0;">
         <div class="container menu-holder" style="background: gray;">
             <ul id="services-menu" class="services-toolbar">
                 <li><a href="" class="help" data-content="help">?</a></li>
@@ -42,43 +52,14 @@
     </div>
     <div class="container" style="">
         <div class="row">
-            <div class="col-md-8 col-sm-8 col-xs-12 content-area" style="">#content area</div>
-            <div class="col-md-4 col-sm-4 col-xs-12  aside-area" style="background:yellow">#aside area</div>
+            <div ui-view></div>
         </div>
     </div>
+
+
+
 <div id="services-content"></div>
 <ul id="services-menu" class="services-toolbar"></ul>
-<div class="test3">test3 </div>
-<a class="">just link</a>
-    <br /><br /><br /><br /><br /><br /><br /><br /><br />
-    <br /><br /><br /><br /><br /><br /><br /><br /><br />
-    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-    <br /><br /><br /><br /><br /><br /><br /><br /><br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <div class="col-md-5" ng-controller="cmCtrl">{{check}}</div>
-        <div class="row-wrapper">
-            <header class="clmn-12 logo-holder">
-                <!--<a class="logo" href="index.html" title=""></a>-->
-            </header>
-        </div>
-        <div class="offset-wrapper">
-            <div class="row-wrapper">
-
-            </div>
-        </div>
-    <hr />
-    <div ui-view></div>
     <script type="text/javascript" src="../../ui/src/js/3p/angular.js"></script>
     <script type="text/javascript" src="../../ui/src/js/3p/angular-resource.js"></script>
     <script type="text/javascript" src="../../ui/src/js/3p/angular-ui-router.js"></script>

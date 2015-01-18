@@ -16,6 +16,12 @@
 -------------------------------------------------------------*/
 @media screen and (min-width: 530px) and (max-width: 768px) {
 
+    .header-menu-holder {
+        ul > li a {
+            padding-left: 0;
+        }
+    }
+
     ul.nav-list {
         li {
             font-size: 80%;
@@ -54,6 +60,39 @@
 /* Custom point: #3
 ---------------------------------------*/
 @media screen and (max-width: 529px) {
+
+    .logo-holder {
+        line-height: 50px;
+        text-align: center;
+
+      .logo {
+            display: inline-block;
+            vertical-align: middle;
+            width: 233px;
+            height: 37px;
+            background: url(../../ui/src/images/logo_320.png) top left no-repeat;
+        }
+    }
+
+    .header-menu-holder {
+        position: relative;
+        height: auto;
+        padding: 0;
+
+        .header-menu {
+            height: auto;
+            overflow: hidden;
+
+            & > li {
+                float: left;
+                width: 50%;
+                text-align: center;
+                background: pink;
+            }
+        }
+    }
+
+
 
     .menu-toggle-button {
         display: block;
