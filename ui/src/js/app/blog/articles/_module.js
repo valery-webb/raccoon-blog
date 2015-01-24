@@ -1,12 +1,19 @@
-angular.module('app.blog.articles').config(function($stateProvider, $urlRouterProvider) {
-  //
-  // For any unmatched url, redirect to /state1
-  // $urlRouterProvider.otherwise("/state1");
-  // //
-  // // Now set up the states
+angular.module('app.blog.articles').config(function ($stateProvider, $urlRouterProvider) {
+
     $stateProvider
         .state('articles', {
-            url: '/articles1',
-            templateUrl: 'js/app/blog/articles/articlesDirective.html'
+            url: '/articles',
+            abstract: true,
+            template: '<ui-view/>'
+        })
+        .state('articles.list', {
+            url: '/list',
+            templateUrl: 'js/app/blog/articles/articlesDirective.html',
+            controller: 'ArticlesCtrl'
+        })
+        .state('articles.detailed', {
+            url: '/detailed/:articleId',
+            templateUrl: 'js/app/blog/articles/article-detailed/articleDetailedDirective.html',
+            controller: 'ArticleDetailedCtrl'
         })
 });

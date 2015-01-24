@@ -1,5 +1,5 @@
 angular.module('app.admin.contentManager').controller('ContentManagerCtrl', [
-    '$scope', '$http', 'isLoaded', function ($scope, $http, isLoaded) {
+    '$scope', '$http', 'isLoaded', 'articlesSvc', function ($scope, $http, isLoaded, articlesSvc) {
 
     $scope.isLoaded = isLoaded;
 
@@ -12,5 +12,7 @@ angular.module('app.admin.contentManager').controller('ContentManagerCtrl', [
     error(function (data, status, headers, config) {
 
     });
+
+    console.log(articlesSvc.articles)
 
 }]);

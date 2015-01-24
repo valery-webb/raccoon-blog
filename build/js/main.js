@@ -63,16 +63,23 @@ angular.module('app.admin').config(function ($stateProvider, $urlRouterProvider)
 angular.module('app.blog');
 angular.module('app.admin.contentManager').value('a', 111);
 angular.module('app.admin.userInfo');
-angular.module('app.blog.articles').config(function($stateProvider, $urlRouterProvider) {
-  //
-  // For any unmatched url, redirect to /state1
-  // $urlRouterProvider.otherwise("/state1");
-  // //
-  // // Now set up the states
+angular.module('app.blog.articles').config(function ($stateProvider, $urlRouterProvider) {
+
     $stateProvider
         .state('articles', {
-            url: '/articles1',
-            templateUrl: 'js/app/blog/articles/articlesDirective.html'
+            url: '/articles',
+            abstract: true,
+            template: '<ui-view/>'
+        })
+        .state('articles.list', {
+            url: '/list',
+            templateUrl: 'js/app/blog/articles/articlesDirective.html',
+            controller: 'ArticlesCtrl'
+        })
+        .state('articles.detailed', {
+            url: '/detailed/:articleId',
+            templateUrl: 'js/app/blog/articles/article-detailed/articleDetailedDirective.html',
+            controller: 'ArticleDetailedCtrl'
         })
 });
 angular.module('app.blog.blogers').config(function ($stateProvider, $urlRouterProvider) {
@@ -102,7 +109,7 @@ angular.module('app.blog.blogers').config(function ($stateProvider, $urlRouterPr
 });
 angular.module('app.blog.contacts')
 angular.module('app.admin.contentManager').controller('ContentManagerCtrl', [
-    '$scope', '$http', 'isLoaded', function ($scope, $http, isLoaded) {
+    '$scope', '$http', 'isLoaded', 'articlesSvc', function ($scope, $http, isLoaded, articlesSvc) {
 
     $scope.isLoaded = isLoaded;
 
@@ -116,6 +123,8 @@ angular.module('app.admin.contentManager').controller('ContentManagerCtrl', [
 
     });
 
+    console.log(articlesSvc.articles)
+
 }]);
 
 
@@ -125,9 +134,65 @@ angular.module('app.admin.userInfo').controller('UserInfoCtrl', ['$scope', funct
 }]);
 
 
+angular.module('app.blog.articles').controller('ArticlesCtrl', [
+    '$scope', 'articlesSvc', '$rootScope', function ($scope, articlesSvc, $rootScope) {
 
 
+        $scope.updates = function () {
+            $scope.$emit('UPDATES');
+        }
 
+        $scope.$on('UPDATES', function() {
+            articlesSvc.isNeedUpdates = true;
+        })
+
+        $scope.isLoading = false;
+
+
+        if (!articlesSvc.isArticlesLoaded || articlesSvc.isNeedUpdates) {
+            $scope.isLoading = true;
+
+            // pass opts: page number, sort
+            articlesSvc.getArticles().success(function (data) {
+                $scope.articles = data;
+                articlesSvc.articles = data;
+                articlesSvc.isArticlesLoaded = true;
+                articlesSvc.isNeedUpdates = false;
+                $scope.isLoading = false;
+            });
+
+        } else {
+            $scope.articles = articlesSvc.articles;
+        }
+
+}]);
+
+angular.module('app.blog.articles').factory('articlesSvc', ['$http' /*'$resource'*/, function ($http) {
+
+    var params = [
+        'rows=10&',
+        'id={index}&',
+        'fname={firstName}&',
+        'lname={lastName}&',
+        'words={lorem|20}&',
+        'delay=1&',
+        'company={business}&',
+        'callback=JSON_CALLBACK'
+    ];
+
+    var articles;
+    var isNeedUpdates = false;
+    var isArticlesLoaded = false;
+
+    return {
+        isArticlesLoaded: isArticlesLoaded,
+        isNeedUpdates: isNeedUpdates,
+        getArticles: function () {
+            return $http.jsonp('http://filltext.com/?' + params.join().replace(/,/igm,''));
+        }
+    }
+
+}]);
 angular.module('app.blog.blogers').controller('blogersCtrl', ['$scope', '$stateParams', function ($scope,  $stateParams) {
     // console.log($stateParams, '$stateParams')
     // $scope.blogerId = $stateParams.blogerId;
@@ -149,3 +214,11 @@ angular.module('app.blog.blogers').controller('blogersDetailCtrl', ['$scope', '$
 
 
 
+
+angular.module('app.blog.articles').controller('ArticleDetailedCtrl', [
+    '$scope', 'articlesSvc', '$stateParams', function ($scope, articlesSvc, $stateParams) {
+
+    $scope.articleDetailed = 'Article Detailed Here we go!';
+    $scope.articleId = $stateParams.articleId;
+
+}]);
